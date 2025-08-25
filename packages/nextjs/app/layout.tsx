@@ -1,13 +1,22 @@
-import { Space_Grotesk } from "next/font/google";
+import { Montserrat, Open_Sans } from "next/font/google";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
-const spaceGrotesk = Space_Grotesk({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  display: "swap",
+  variable: "--font-montserrat",
+  weight: ["400", "600", "700", "900"],
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-open-sans",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata = getMetadata({
@@ -17,7 +26,7 @@ export const metadata = getMetadata({
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html suppressHydrationWarning className={`${spaceGrotesk.variable} font-space-grotesk`}>
+    <html suppressHydrationWarning className={`${montserrat.variable} ${openSans.variable} antialiased dark`}>
       <body>
         <ThemeProvider enableSystem>
           <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
